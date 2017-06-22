@@ -1,0 +1,48 @@
+
+# ===================================================================
+# Spring Boot configuration.
+#
+# This configuration will be overriden by the Spring profile you use,
+# for example application-dev.yml if you use the "dev" profile.
+# ===================================================================
+
+# ===================================================================
+# Standard Spring Boot properties.
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+spring:
+    profiles:
+        active: dev
+    devtools:
+        restart:
+            enabled: true
+        livereload:
+            enabled: true
+    jackson:
+      serialization.indent_output: true
+    datasource:
+      url: jdbc:h2:mem:AZ;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      driverClassName: org.h2.Driver
+      username: sa
+      password:
+      testWhileIdle: true
+      validationQuery: SELECT 1
+    jpa:
+      show-sql: true
+      database-platform: org.hibernate.dialect.H2Dialect
+      hibernate:
+         ddl-auto: update
+         naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      properties:
+         hibernate:
+           dialect: org.hibernate.dialect.H2Dialect
+    h2:
+      console:
+        enabled: true
+        path: /h2-console
+
+
+server:
+    port: 8080
